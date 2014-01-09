@@ -1,0 +1,49 @@
+#bgimg
+{
+	position: absolute;
+	left: 50%;
+	width: 800px;
+	margin-left: -400px;
+	top: 50px;
+	height: 600px;
+}
+
+#video
+{
+	position: absolute;
+	width: 630px;
+	height: 472px;
+	left: 50%;
+	top: 50px;
+	margin-left: -315px;
+}
+
+.smalllink
+{
+	position: absolute;
+	bottom: 50px;
+	width: 64px;
+	height: 64px;
+}
+
+#yt
+{
+	background-image: url("images/yt64.png");
+	left: 368px;
+}	
+
+#fb
+{
+	background-image: url("images/fb64.png");
+	left: 288px;
+}
+#tw
+{
+	background-image: url("images/tw64.png");
+	left: 448px;
+}
+
+body
+{
+	background-color: #000;
+}
