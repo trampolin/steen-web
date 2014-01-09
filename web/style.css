@@ -1,21 +1,60 @@
-#bgimg
+#kachelcontainer
 {
 	position: absolute;
+	width: 920px;
+	height: 500px;
 	left: 50%;
-	width: 800px;
-	margin-left: -400px;
 	top: 50px;
-	height: 600px;
+	margin-left: -460px;
 }
 
-#video
+.kachel
 {
 	position: absolute;
-	width: 630px;
-	height: 472px;
-	left: 50%;
-	top: 50px;
-	margin-left: -315px;
+	margin:
+	width: 450px;
+	height: 250px;
+	border: 0px solid black;
+}
+
+.oben
+{
+	top: 0px;
+}
+
+.unten
+{
+	bottom: 0px;
+}
+
+.links
+{
+  left: 0px;
+}
+
+.rechts
+{
+	right: 0px;
+}
+
+#KachelFB
+{
+	background-color: red;
+}
+
+#KachelYT
+{
+	background-color: blue;
+}
+
+#KachelTW
+{
+	background-color: green;
+}
+
+#KachelVid
+{
+	background-color: yellow;
 }
 
 .smalllink
@@ -45,5 +84,5 @@
 
 body
 {
-	background-color: #000;
+	background-color: #fff;
 }
