@@ -60,6 +60,7 @@
 #KachelFB
 {
 	/*background-color: red;*/
+		border: 0px;
 }
 
 #KachelYT
@@ -70,6 +71,7 @@
 #KachelTW
 {
 	/*background-color: green;*/
+	border: 0px;
 }
 
 #KachelVid
