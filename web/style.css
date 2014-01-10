@@ -1,20 +1,35 @@
+#container {
+	position: absolute;
+	width: 958px;
+	left: 50%;
+	top: 0px;
+	bottom: 0px;
+	margin-left: -460px;
+	border-left: 1px solid #aaa;
+	border-right: 1px solid #aaa;
+	background-color: #fff;
+}
+
 #kachelcontainer
 {
 	position: absolute;
-	width: 920px;
-	height: 500px;
+	width: 942px;
+	height: 540px;
 	left: 50%;
 	top: 50px;
-	margin-left: -460px;
+	margin-left: -471px;
+	border: 1px solid #aaa;
+	background-color: #F8f8f8;
 }
 
 .kachel
 {
 	position: absolute;
-	margin:
-	width: 450px;
-	height: 250px;
-	border: 0px solid black;
+	margin: 10px;
+	width: 448px;
+	height: 248px;
+	border: 1px solid #aaa;
+	background-color: #fff;
 }
 
 .oben
@@ -39,28 +54,28 @@
 
 #KachelFB
 {
-	background-color: red;
+	/*background-color: red;*/
 }
 
 #KachelYT
 {
-	background-color: blue;
+	/*background-color: blue;*/
 }
 
 #KachelTW
 {
-	background-color: green;
+	/*background-color: green;*/
 }
 
 #KachelVid
 {
-	background-color: yellow;
+	/*background-color: yellow;*/
 }
 
 .smalllink
 {
 	position: absolute;
-	bottom: 50px;
+	top: 600px;
 	width: 64px;
 	height: 64px;
 }
@@ -68,21 +83,21 @@
 #yt
 {
 	background-image: url("images/yt64.png");
-	left: 368px;
+	left: 447px;
 }	
 
 #fb
 {
 	background-image: url("images/fb64.png");
-	left: 288px;
+	left: 367px;
 }
 #tw
 {
 	background-image: url("images/tw64.png");
-	left: 448px;
+	left: 527px;
 }
 
 body
 {
-	background-color: #fff;
+	background-color: #F0F0F0;
 }
