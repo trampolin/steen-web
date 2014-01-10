@@ -1,35 +1,50 @@
-#container {
+#everything {
 	position: absolute;
-	width: 958px;
+	width: 960px;
 	left: 50%;
 	top: 0px;
 	bottom: 0px;
 	margin-left: -460px;
 	border-left: 1px solid #aaa;
 	border-right: 1px solid #aaa;
+	background-color: #F8f8f8;
+}
+
+#header
+{
+	height: 150px;
+	width: 100%;
 	background-color: #fff;
 }
 
 #kachelcontainer
 {
-	position: absolute;
-	width: 942px;
+	/*position: absolute;*/
 	height: 540px;
-	left: 50%;
-	top: 50px;
-	margin-left: -471px;
-	border: 1px solid #aaa;
-	background-color: #F8f8f8;
+	width: 100%;
+	/*left: 10px;*/
+	/*top: 160px;*/
+	/*right: 10px;*/
+}
+
+#quicklinks
+{
+	height: 96px;
+	width: 100%;
+	/*border-top: 1px solid #aaa;
+	border-bottom: 1px solid #aaa;*/
+	background-color: #fff;
 }
 
 .kachel
 {
-	position: absolute;
+	/*position: absolute;*/
 	margin: 10px;
-	width: 448px;
-	/*height: 248px;*/
-	border: 1px solid #aaa;
+	width: 460px;
+	/*height: 250px;*/
+	border: 0px solid #aaa;
 	background-color: #fff;
+	float: left;
 }
 
 .oben
@@ -54,13 +69,13 @@
 
 .kachelhoch
 {
-	height: 248px;
+	height: 250px;
 }
 
 #KachelFB
 {
 	/*background-color: red;*/
-		border: 0px;
+		height: 520px;
 }
 
 #KachelYT
@@ -71,7 +86,6 @@
 #KachelTW
 {
 	/*background-color: green;*/
-	border: 0px;
 }
 
 #KachelVid
@@ -81,10 +95,12 @@
 
 .smalllink
 {
-	position: absolute;
-	top: 600px;
+	/*position: absolute;*/
+	/*top: 600px;*/
 	width: 64px;
 	height: 64px;
+	float: left;
+	margin: 16px;
 }
 
 #yt
