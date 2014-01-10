@@ -1,70 +1,42 @@
+.innerfull{
+	width: 920px;
+}
+
 #everything {
 	position: absolute;
-	width: 960px;
 	left: 50%;
 	top: 0px;
-	bottom: 0px;
 	margin-left: -460px;
 	border-left: 1px solid #aaa;
 	border-right: 1px solid #aaa;
-	background-color: #F8f8f8;
+	background-color: #888;
+	min-height: 100%;
 }
 
 #header
 {
 	height: 150px;
-	width: 100%;
 	background-color: #fff;
 }
 
 #kachelcontainer
 {
-	/*position: absolute;*/
 	height: 540px;
-	width: 100%;
-	/*left: 10px;*/
-	/*top: 160px;*/
-	/*right: 10px;*/
 }
 
 #quicklinks
 {
 	height: 96px;
-	width: 100%;
-	/*border-top: 1px solid #aaa;
-	border-bottom: 1px solid #aaa;*/
 	background-color: #fff;
 }
 
 .kachel
 {
-	/*position: absolute;*/
 	margin: 10px;
-	width: 460px;
-	/*height: 250px;*/
+	width: 440px;
 	border: 0px solid #aaa;
 	background-color: #fff;
 	float: left;
-}
-
-.oben
-{
-	top: 0px;
-}
-
-.unten
-{
-	bottom: 0px;
-}
-
-.links
-{
-  left: 0px;
-}
-
-.rechts
-{
-	right: 0px;
 }
 
 .kachelhoch
