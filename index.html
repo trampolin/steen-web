@@ -9,13 +9,21 @@
 
 </head>
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/de_DE/all.js#xfbml=1&appId=206800362749008";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 	<div id="container">
 		<div id="kachelcontainer">
-			<div class="kachel oben links" id="KachelFB"></div>
-			<div class="kachel oben rechts" id="KachelYT"></div>
-			<div class="kachel unten links" id="KachelTW"></div>
-			<div class="kachel unten rechts" id="KachelVid"></div>
+			<div class="kachel oben unten links fb-like-box" data-href="http://www.facebook.com/steenband.de" data-width="448" data-height="518" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="true" data-show-border="false" id="KachelFB"></div>
+			<div class="kachel oben rechts kachelhoch" id="KachelYT"></div>
+			<!--div class="kachel unten links kachelhoch" id="KachelTW"></div-->
+			<div class="kachel unten rechts kachelhoch" id="KachelVid"></div>
 		</div>
 		<div id="bgimg">
 			<a href="http://www.facebook.com/steenband.de" title="Facebook"><div class="smalllink" id="fb"></div></a>

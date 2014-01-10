@@ -27,7 +27,7 @@
 	position: absolute;
 	margin: 10px;
 	width: 448px;
-	height: 248px;
+	/*height: 248px;*/
 	border: 1px solid #aaa;
 	background-color: #fff;
 }
@@ -50,6 +50,11 @@
 .rechts
 {
 	right: 0px;
+}
+
+.kachelhoch
+{
+	height: 248px;
 }
 
 #KachelFB
