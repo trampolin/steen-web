@@ -10,7 +10,7 @@
 </head>
 <body>
 <?php
-	include_once("/web/functions.php");
+	include_once("web/functions.php");
 	$kacheln = GetKacheln();
 ?>
 <div id="fb-root"></div>
