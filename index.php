@@ -9,6 +9,10 @@
 
 </head>
 <body>
+<?php
+	include_once("/web/functions.php");
+	$kacheln = GetKacheln();
+?>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -22,17 +26,11 @@
 		<div class="innerfull" id="header">
 		</div>
 		<div class="innerfull" id="kachelcontainer">
-			<div class="kachel fb-like-box" data-href="http://www.facebook.com/steenband.de" data-width="440" data-height="520" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="true" data-show-border="true" id="KachelFB"></div>
-			<div class="kachel kachelhoch" id="KachelVid">
-				<iframe width="440" height="250" src="//www.youtube.com/embed/S-EJNmlUfwQ" frameborder="0" allowfullscreen></iframe>
-			</div>
-			<!--div class="kachel  links kachelhoch" id="KachelTW"></div-->
-			<div class="kachel kachelhoch" id="KachelTW">
-				<a class="twitter-timeline" href="https://twitter.com/steenband" data-widget-id="421653567015890945">Tweets von @steenband</a>
-				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-
-			</div>
+			<?php foreach($kacheln as $kachel): ?>
+				<div class="<?php echo $kachel->cssclass; ?>" id="<?php echo $kachel->cssid; ?>" <?php echo $kachel->options; ?>>
+					<?php echo $kachel->content; ?>
+				</div>
+			<?php endforeach; ?>
 		</div>
 		<div class="innerfull" id="quicklinks">
 			<a href="http://www.facebook.com/steenband.de" title="Facebook"><div class="smalllink" id="fb"></div></a>
