@@ -12,6 +12,7 @@
 <?php
 	include_once("web/functions.php");
 	$kacheln = GetKacheln();
+	$quicklinks = GetQuicklinks();
 ?>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -26,16 +27,10 @@
 		<div class="innerfull" id="header">
 		</div>
 		<div class="innerfull" id="kachelcontainer">
-			<?php foreach($kacheln as $kachel): ?>
-				<div class="<?php echo $kachel->cssclass; ?>" id="<?php echo $kachel->cssid; ?>" <?php echo $kachel->options; ?>>
-					<?php echo $kachel->content; ?>
-				</div>
-			<?php endforeach; ?>
+			<?php foreach($kacheln as $kachel) { echo $kachel->getHTML(); } ?>
 		</div>
 		<div class="innerfull" id="quicklinks">
-			<a href="http://www.facebook.com/steenband.de" title="Facebook"><div class="smalllink" id="fb"></div></a>
-			<a href="http://www.youtube.com/steenband" title="Youtube"><div class="smalllink" id="yt"></div></a>
-			<a href="http://www.twitter.com/steenband" title="Twitter"><div class="smalllink" id="tw"></div></a>
+			<?php foreach($quicklinks as $quicklink) { echo $quicklink->getHTML(); } ?>
 		</div>
 	</div>
 </body>
