@@ -11,8 +11,11 @@
 <body>
 <?php
 	include_once("web/functions.php");
-	$kacheln = GetKacheln();
-	$quicklinks = GetQuicklinks();
+	
+	$pageControl = new PageControl(false);
+	
+	//$kacheln = GetKacheln();
+	//$quicklinks = GetQuicklinks();
 ?>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -27,10 +30,10 @@
 		<div class="innerfull" id="header">
 		</div>
 		<div class="innerfull" id="kachelcontainer">
-			<?php foreach($kacheln as $kachel) { echo $kachel->getHTML(); } ?>
+			<?php echo $pageControl->getKachelListHTML() ?>
 		</div>
 		<div class="innerfull" id="quicklinks">
-			<?php foreach($quicklinks as $quicklink) { echo $quicklink->getHTML(); } ?>
+			<?php echo $pageControl->getQuicklinkListHTML() ?>
 		</div>
 	</div>
 </body>

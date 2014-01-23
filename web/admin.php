@@ -17,19 +17,15 @@
 	echo $user." ".$password." ".$loggedin;
 
 	include_once("functions.php");
-	$kacheln = GetKacheln(true);
+	
+	$pageControl = new PageControl(true);
 ?>
 	<div id="everything">
 		<div class="innerfull" id="header">
 		</div>
 		<div class="innerfull" id="kachelcontainer">		
-		
-			<?php foreach($kacheln as $kachel): ?>
-				<div class="adminkachel <?php echo $kachel->active ? "active" : " inactive";?>">
-					<span><?php echo $kachel->kachelname; ?></span>
-				</div>
-			<?php endforeach; ?>
-			
+			<?php echo $pageControl->getKachelListHTML() ?>
+			<?php echo $pageControl->getQuicklinkListHTML() ?>
 		</div>
 	</div>
 </body>
