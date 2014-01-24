@@ -115,6 +115,14 @@ class PageControl {
 		$this->quicklinks = $this->GetQuicklinks();
 	}
 	
+	public function getKachelListHeaderHTML() {
+		return "<div class='adminkachel'><span>Kacheln</span></div>"; 
+	}	
+	
+	public function getQuicklinkListHeaderHTML() {
+		return "<div class='adminkachel'><span>Quicklinks</span></div>"; 
+	}
+	
 	public function getKachelListHTML() {
 		$result = "";
 		foreach($this->kacheln as $kachel) 

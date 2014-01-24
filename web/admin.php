@@ -23,8 +23,10 @@
 	<div id="everything">
 		<div class="innerfull" id="header">
 		</div>
-		<div class="innerfull" id="kachelcontainer">		
+		<div class="innerfull" id="kachelcontainer">	
+			<?php echo $pageControl->getKachelListHeaderHTML() ?>
 			<?php echo $pageControl->getKachelListHTML() ?>
+			<?php echo $pageControl->getQuicklinkListHeaderHTML() ?>
 			<?php echo $pageControl->getQuicklinkListHTML() ?>
 		</div>
 	</div>
