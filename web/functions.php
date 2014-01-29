@@ -3,6 +3,7 @@
 include_once("database.php");
 
 class Kachel {
+	private $db;
 	public $id;
 	public $kachelorder;
 	public $cssid;
@@ -22,9 +23,14 @@ class Kachel {
 			return "<div class='adminkachel ".($this->active ? "active" : "inactive")."'><span>".$this->kachelname."</span></div>";
 		}
 	}
+	
+	public function __construct($aDb) {
+		$this->db = $adb;
+	}
 }
 
 class Quicklink {
+	private $db;
 	public $id;
 	public $qlorder;
 	public $qltitle;
@@ -43,6 +49,11 @@ class Quicklink {
 			return "<div class='adminkachel ".($this->active ? "active" : "inactive")."'><span>".$this->qltitle."</span></div>";
 		}
 	}
+	
+	public function __construct($aDb) {
+		$this->db = $adb;
+	}
+	
 }
 
 class PageControl {
@@ -59,7 +70,7 @@ class PageControl {
 			$content = array();
 			
 			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
-				$quicklink = new Quicklink();		
+				$quicklink = new Quicklink($this->db);		
 				$quicklink->qlcssid = $row['qlcssid'];
 				$quicklink->id = $row['id'];
 				$quicklink->qlcssclass = $row['qlcssclass'];
@@ -88,7 +99,7 @@ class PageControl {
 			$content = array();
 			
 			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
-				$kachel = new Kachel();		
+				$kachel = new Kachel($this->db);		
 				$kachel->cssid = $row['cssid'];
 				$kachel->id = $row['id'];
 				$kachel->cssclass = $row['cssclass'];
