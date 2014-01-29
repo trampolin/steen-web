@@ -6,7 +6,8 @@
 <link rel="shortcut icon" type="image/x-icon" href="images/steen_32x32_schwarz.ico">
 <link rel="stylesheet" type="text/css" href="style.css">
 <title>steen admin</title>
-
+<script src="jquery-2.1.0.js" type="text/javascript"></script> 
+<script src="functions.js" type="text/javascript"></script> 
 </head>
 <body>
 <?php
@@ -19,6 +20,16 @@
 	include_once("functions.php");
 	
 	$pageControl = new PageControl(true);
+	
+	//$quicklink = Quicklink::select($pageControl->getDB(),4);//new Quicklink();
+	//$quicklink->qltitle = "TEST";
+	//$quicklink->qlurl = "TEST";
+	//$quicklink->qlorder = 10000;
+	//$quicklink->qlcssid = "TEST";
+	//$quicklink->qlcssclass = "TEST";
+	//$quicklink->active = 0;
+	//$quicklink->remove();
+	
 ?>
 	<div id="everything">
 		<div class="innerfull" id="header">

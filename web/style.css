@@ -56,6 +56,33 @@
 	border-radius: 10px;
 }
 
+.adminbutton
+{
+	margin: 10px;
+	width: 28px;
+	height: 28px;
+	border: 1px solid #000;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	float: right;
+}
+
+.adminbutton-delete
+{
+	background-color: red;
+}
+
+.adminbutton-deactivate
+{
+	background-color: orange;
+}
+
+.adminbutton-activate
+{
+	background-color: blue;
+}
+
 #login
 {
 	margin: 10px;

@@ -1,60 +1,8 @@
 <?php
 
 include_once("database.php");
-
-class Kachel {
-	private $db;
-	public $id;
-	public $kachelorder;
-	public $cssid;
-	public $cssclass;
-	public $options;
-	public $content;
-	public $active;
-	public $kachelname;
-	
-	public function getHTML($asAdmin = false) {
-		if (!$asAdmin)
-		{
-			return "<div class='".$this->cssclass."' id='".$this->cssid."' ".$this->options.">".$this->content."</div>";
-		}
-		else
-		{
-			return "<div class='adminkachel ".($this->active ? "active" : "inactive")."'><span>".$this->kachelname."</span></div>";
-		}
-	}
-	
-	public function __construct($aDb) {
-		$this->db = $adb;
-	}
-}
-
-class Quicklink {
-	private $db;
-	public $id;
-	public $qlorder;
-	public $qltitle;
-	public $qlcssid;
-	public $qlcssclass;
-	public $qlurl;
-	public $active;
-	
-	public function getHTML($asAdmin = false) {
-		if (!$asAdmin)
-		{
-			return "<a href='".$this->qlurl."' title='".$this->qltitle."'><div class='".$this->qlcssclass."' id='".$this->qlcssid."'></div></a>";
-		}
-		else
-		{
-			return "<div class='adminkachel ".($this->active ? "active" : "inactive")."'><span>".$this->qltitle."</span></div>";
-		}
-	}
-	
-	public function __construct($aDb) {
-		$this->db = $adb;
-	}
-	
-}
+include_once("kachel.php");
+include_once("quicklink.php");
 
 class PageControl {
 	private $db;
@@ -119,6 +67,10 @@ class PageControl {
 		}
 	}
 	
+	public function getDB() {
+		return $this->db;
+	}
+	
 	public function __construct($asAdmin = false) {
 		$this->db = new DatabaseConnection();
 		$this->adminmode = $asAdmin;
@@ -127,11 +79,11 @@ class PageControl {
 	}
 	
 	public function getKachelListHeaderHTML() {
-		return "<div class='adminkachel'><span>Kacheln</span></div>"; 
+		return "\n<div class='adminkachel'><span>Kacheln</span></div>"; 
 	}	
 	
 	public function getQuicklinkListHeaderHTML() {
-		return "<div class='adminkachel'><span>Quicklinks</span></div>"; 
+		return "\n<div class='adminkachel'><span>Quicklinks</span></div>"; 
 	}
 	
 	public function getKachelListHTML() {
@@ -150,6 +102,10 @@ class PageControl {
 			$result = $result.$quicklink->getHTML($this->adminmode);
 		}
 		return $result;
+	}
+	
+	public function toJson() {
+		return json_encode($this);
 	}
 }
 
