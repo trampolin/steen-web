@@ -79,28 +79,34 @@ class PageControl {
 	}
 	
 	public function getKachelListHeaderHTML() {
-		return "\n<div class='adminkachel'><span>Kacheln</span></div>"; 
+		return "\n<div class='adminkachel'><span>Kacheln</span>".
+			"<a href='#'><div class='adminbutton adminbutton-add' onClick=''></div></a>".
+		"</div>"; 
 	}	
 	
 	public function getQuicklinkListHeaderHTML() {
-		return "\n<div class='adminkachel'><span>Quicklinks</span></div>"; 
+		return "\n<div class='adminkachel'><span>Quicklinks</span>".
+			"<a href='#'><div class='adminbutton adminbutton-add' onClick='addLocalQuicklink()'></div></a>".
+		"</div>"; 
 	}
 	
 	public function getKachelListHTML() {
-		$result = "";
+		$result = "<div id='kachelliste'>";
 		foreach($this->kacheln as $kachel) 
 		{ 
-			$result = $result.$kachel->getHTML($this->adminmode);
+			$result .= $kachel->getHTML($this->adminmode);
 		}
+		$result .= "</div>";
 		return $result;
 	}
 	
 	public function getQuicklinkListHTML() {
-		$result = "";
+		$result = "<div id='quicklinkliste'>";
 		foreach($this->quicklinks as $quicklink) 
 		{ 
 			$result = $result.$quicklink->getHTML($this->adminmode);
 		}
+		$result .= "</div>";
 		return $result;
 	}
 	

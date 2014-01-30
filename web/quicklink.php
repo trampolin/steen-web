@@ -19,10 +19,14 @@ class Quicklink {
 		}
 		else
 		{
-			return "\n<div class='adminkachel ".($this->active ? "active" : "inactive")."' id='quicklink-".$this->id."'><span>"
-				.$this->qltitle."</span>".
-				"<div class='adminbutton adminbutton-".($this->active ? "deactivate' onClick='handleRequest(1,".$this->id.",\"deactivate\")'" : "activate' onClick='handleRequest(1,".$this->id.",\"activate\")'")."></div>".
-				"<div class='adminbutton adminbutton-delete' onClick='removeQuicklink(".$this->id.")'></div>".
+			return 	"<div class='adminkachel ".($this->active ? "active" : "inactive")."' id='quicklink-".$this->id."'>".
+					"<div class='adminkachel-content'>".
+						"<span>".$this->qltitle."</span>".
+						"<div class='buttonbox'>".
+							"<a href='#'><div class='adminbutton adminbutton-delete' onClick='removeQuicklink(".$this->id.")'></div></a>".
+							"<a href='#'><div class='adminbutton adminbutton-".($this->active ? "deactivate' onClick='deactivateQuicklink(".$this->id.")'" : "activate' onClick='activateQuicklink(".$this->id.")'")."></div></a>".
+						"</div>".
+					"</div>".
 				"</div>";
 		}
 	}

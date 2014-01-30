@@ -16,14 +16,19 @@ class Kachel {
 	public function getHTML($asAdmin = false) {
 		if (!$asAdmin)
 		{
-			return "\n<div class='".$this->cssclass."' id='".$this->cssid."' ".$this->options.">".$this->content."</div>";
+			return "<div class='".$this->cssclass."' id='".$this->cssid."' ".$this->options.">".$this->content."</div>";
 		}
 		else
 		{
-			return "\n<div class='adminkachel ".($this->active ? "active" : "inactive")."' id='kachel-".$this->id."'><span>"
-				.$this->kachelname."</span>".
-				"<div class='adminbutton adminbutton-".($this->active ? "deactivate' onClick='handleRequest(1,".$this->id.",\"deactivate\")'" : "activate' onClick='handleRequest(1,".$this->id.",\"activate\")'")."></div>".
-				"<div class='adminbutton adminbutton-delete' onClick='handleRequest(1,".$this->id.",\"delete\",{\"bla\": \"blub\"})'></div>".
+			return 
+				"<div class='adminkachel ".($this->active ? "active" : "inactive")."' id='kachel-".$this->id."'>".
+					"<div class='adminkachel-content'>".
+						"<span>".$this->kachelname."</span>".
+						"<div class='buttonbox'>".
+							"<a href='#'><div class='adminbutton adminbutton-delete' onClick=''></div></a>".
+							"<a href='#'><div class='adminbutton adminbutton-".($this->active ? "deactivate' onClick=''" : "activate' onClick=''")."></div></a>".
+						"</div>".
+					"</div>".
 				"</div>";
 		}
 	}

@@ -1,11 +1,54 @@
+$.fn.slideUpRemove = function (d, c) {
+    var _this = this,
+        duration = $.isNumeric(d) || $.isPlainObject(d) ? d : 300,
+        callback = $.isFunction(c) ? c : d;
+
+    return this.slideUp(duration).promise().done(function () {
+        _this.remove();
+        if ($.isFunction(callback)) callback.call();
+    });
+};
+
 function removeQuicklink(aid) {
+	if (confirm("delete quicklink "+aid+"?")) {
+		$.ajax(
+			{
+				url: "handler.php",
+				data: {
+					loggedin: 1,
+					id: aid,
+					action: "remove",
+					mode: "quicklink"
+				},
+				dataType : "json",
+				type: "POST",
+				success: function (response) {
+					if (response.result = "ok")
+					{
+						$("#quicklink-"+response.id).slideUpRemove()//slideUp(300);
+					}
+					else
+					{
+						alert(response);
+					}
+					//console.log(response);
+				},			
+				error: function( xhr, status ) {
+						alert( "Sorry, there was a problem!" );
+				}
+			}
+		)
+	}
+}
+
+function activateQuicklink(aid) {
 	$.ajax(
 		{
 			url: "handler.php",
 			data: {
 				loggedin: 1,
 				id: aid,
-				action: "remove",
+				action: "activate",
 				mode: "quicklink"
 			},
 			dataType : "json",
@@ -13,7 +56,8 @@ function removeQuicklink(aid) {
 			success: function (response) {
 				if (response.result = "ok")
 				{
-					$("#quicklink-"+response.id).hide("slow");
+					//$("#quicklink-"+response.id).slideUpRemove()//slideUp(300);
+					alert('success');
 				}
 				else
 				{
@@ -25,8 +69,15 @@ function removeQuicklink(aid) {
 					alert( "Sorry, there was a problem!" );
 			}
 		}
-	
 	)
+	
+}
+
+function addLocalQuicklink() {
+	$('#quicklinkliste').append('<div class="adminkachel" id="quicklink-new"></div>');
+	$('#quicklink-new').hide();
+	$('#quicklink-new').slideDown(300);
+	
 }
 
 

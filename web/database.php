@@ -6,7 +6,7 @@ class DatabaseConnection {
 	
 	function __construct() {
 		$this->dblink = mysql_connect("localhost", "root", "");
-		mysql_select_db("steen-web");
+		mysql_select_db("sb");
 	}
 
 	function query($query) {

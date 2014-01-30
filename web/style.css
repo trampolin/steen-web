@@ -24,13 +24,18 @@
 
 #kachelcontainer
 {
-	height: 540px;
+	min-height: 540px;
 }
 
 #quicklinks
 {
 	height: 96px;
 	background-color: #fff;
+}
+
+#quicklink-new
+{
+	background-color: yellow;
 }
 
 .kachel
@@ -45,8 +50,9 @@
 .adminkachel
 {
 	margin: 10px;
-	width: 898px;
-	height: 50px;
+	padding: 10px;
+	width: 878px;
+	/*height: 70px;*/
 	border: 1px solid #aaa;
 	background-color: #fff;
 	float: left;
@@ -54,6 +60,19 @@
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
+}
+
+.adminkachel-content
+{
+	/*margin: 10px;*/
+}
+
+.buttonbox
+{
+	height: 50px;
+	/*background-color: yellow;*/
+	/*width: 150px;*/
+	float: right;
 }
 
 .adminbutton
@@ -81,6 +100,11 @@
 .adminbutton-activate
 {
 	background-color: blue;
+}
+
+.adminbutton-add
+{
+	background-color: green;
 }
 
 #login

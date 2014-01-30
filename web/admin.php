@@ -15,30 +15,54 @@
 	$password = isset($_POST['password']) ? $_POST['password'] : null; 
 	$loggedin = isset($_POST['loggedin']) ? $_POST['loggedin'] : null; 
 	
-	echo $user." ".$password." ".$loggedin;
+	if ($loggedin == null)
+	{
+		// richtige abfrage!
+		if (($user != null) && ($password != null))
+		{
+			$loggedin = 1;
+		}
+		else
+		{
+			$loggedin = 0;
+		}
+	}
+	
+	//echo $user." ".$password." ".$loggedin;
 
 	include_once("functions.php");
 	
 	$pageControl = new PageControl(true);
 	
-	//$quicklink = Quicklink::select($pageControl->getDB(),4);//new Quicklink();
-	//$quicklink->qltitle = "TEST";
+	$quicklink = new Quicklink($pageControl->getDB());
+	$quicklink->qltitle = "TEST";
 	//$quicklink->qlurl = "TEST";
-	//$quicklink->qlorder = 10000;
+	$quicklink->qlorder = 10000;
 	//$quicklink->qlcssid = "TEST";
 	//$quicklink->qlcssclass = "TEST";
-	//$quicklink->active = 0;
-	//$quicklink->remove();
+	$quicklink->active = 0;
+	//$quicklink->insert();
 	
 ?>
 	<div id="everything">
 		<div class="innerfull" id="header">
 		</div>
-		<div class="innerfull" id="kachelcontainer">	
-			<?php echo $pageControl->getKachelListHeaderHTML() ?>
-			<?php echo $pageControl->getKachelListHTML() ?>
-			<?php echo $pageControl->getQuicklinkListHeaderHTML() ?>
-			<?php echo $pageControl->getQuicklinkListHTML() ?>
+		<div class="innerfull" id="kachelcontainer">
+			<?php 
+				if ($loggedin == 1)
+				{
+					echo $pageControl->getKachelListHeaderHTML(); 
+					echo $pageControl->getKachelListHTML(); 
+					echo $pageControl->getQuicklinkListHeaderHTML();
+					echo $pageControl->getQuicklinkListHTML(); 
+				}
+				else
+				{
+			?>
+				<div class="adminkachel">Please log in: <a href="./index.php">klick</a></div>
+			<?php
+				};
+			?>
 		</div>
 	</div>
 </body>
