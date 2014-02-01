@@ -55,7 +55,7 @@ class IDErrorResponse extends ErrorResponse {
 function handleRequest() {
 	$_WHERE = $_POST;
 	
-	$db = new DatabaseConnection();
+	$pageControl = new PageControl();
 
 	$loggedin = isset($_WHERE['loggedin']) ? $_WHERE['loggedin'] : null;
 	if ($loggedin != null && $loggedin == 1)
@@ -73,11 +73,10 @@ function handleRequest() {
 			case "activate":
 				switch ($mode) {
 					case "quicklink":
-						$ql = Quicklink::select($db,$id);
+						$ql = Quicklink::select($pageControl->getDB(),$id);
 						if ($ql != null)
-						{	
-							$ql->active = 1;
-							if($ql->update()) {
+						{								
+							if($ql->activate()) {
 								$result = new HTMLResponse("ok",null,$id,$ql->getHTML(true));
 								return json_encode($result);
 							}
@@ -98,7 +97,7 @@ function handleRequest() {
 			case "remove":
 				switch ($mode) {
 					case "quicklink":
-						$ql = Quicklink::select($db,$id);
+						$ql = Quicklink::select($pageControl->getDB(),$id);
 						
 						if ($ql != null)
 						{	
