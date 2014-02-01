@@ -5,6 +5,7 @@ include_once("kachel.php");
 include_once("quicklink.php");
 
 class PageControl {
+	private $lastResponse;
 	private $db;
 	public $adminmode;
 	public $kacheln;
@@ -110,8 +111,48 @@ class PageControl {
 		return $result;
 	}
 	
+	public function getKachelByID($aid) {		
+		foreach ($this->kacheln as $kachel) {
+			if($kachel->id == $aid) {
+				return $kachel;
+			}
+		};
+		$this->doError("Kachel ".$aid." not found!");
+		return null;
+	}
+	
+	public function getQuicklinkByID($aid) {		
+		foreach ($this->quicklinks as $quicklink) {
+			if($quicklink->id == $aid) {
+				return $quicklink;
+			}
+		};
+		$this->doError("Quicklink ".$aid." not found!");
+		return null;
+	}
+	
 	public function toJson() {
 		return json_encode($this);
+	}
+	
+	public function doError($message) {
+		$lastResponse = new ErrorResponse($message);
+	}
+	
+	public function getLastResponse($useJson = false) {
+		if ($lastResponse === null) 
+		{
+			$this->doError("No response available");
+		}
+		
+		if ($useJson) 
+		{
+			return $lastResponse->toJson();
+		}
+		else
+		{
+			return $lastResponse;
+		}
 	}
 }
 
