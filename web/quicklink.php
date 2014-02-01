@@ -5,6 +5,7 @@ include_once("basePageObject.php");
 class Quicklink extends BasePageObject {
 	public $url;
 	
+	
 	public function getHTML() {
 		if (!$this->adminmode)
 		{
@@ -12,7 +13,8 @@ class Quicklink extends BasePageObject {
 		}
 		else
 		{
-			return 	"<div class='adminkachel ".($this->active ? "active" : "inactive")."' id='quicklink-".$this->id."'>".
+			return 	
+				"<div class='adminkachel ".($this->active ? "active" : "inactive")."' id='quicklink-".$this->id."'>".
 					"<div class='adminkachel-content'>".
 						"<span>".$this->title."</span>".
 						"<div class='buttonbox'>".
@@ -62,6 +64,7 @@ class Quicklink extends BasePageObject {
 				$this->active = $row['active'];
 			}
 			
+			
 			return true;
 		}
 		else
@@ -81,6 +84,7 @@ class Quicklink extends BasePageObject {
 							"qlurl='".$this->url."', ".
 							"active=".$this->active." ".
 						"WHERE id=".$this->id;
+						
 			return $this->db->query($q);
 		}
 		else
@@ -91,7 +95,7 @@ class Quicklink extends BasePageObject {
 	
 	public function remove() {
 		if ($this->id != null) {
-			$q =	"DELETE FROM Quicklinks WHERE id=".$this->id;
+			$q = "DELETE FROM Quicklinks WHERE id=".$this->id;
 			return $this->db->query($q);
 		}
 		else
@@ -101,7 +105,7 @@ class Quicklink extends BasePageObject {
 	}
 	
 	public function insert() {
-		$q =	"INSERT INTO Quicklinks(qlorder,qltitle,qlcssid,qlcssclass,qlurl,active) VALUES(".
+		$q = "INSERT INTO Quicklinks(qlorder,qltitle,qlcssid,qlcssclass,qlurl,active) VALUES(".
 							$this->order.",".
 						"'".$this->title."',".
 						"'".$this->cssid."',".

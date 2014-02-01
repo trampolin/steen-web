@@ -136,22 +136,22 @@ class PageControl {
 	}
 	
 	public function doError($message) {
-		$lastResponse = new ErrorResponse($message);
+		$this->lastResponse = new ErrorResponse($message);
 	}
 	
 	public function getLastResponse($useJson = true) {
-		if ($lastResponse === null) 
+		if ($this->lastResponse === null) 
 		{
 			$this->doError("No response available");
 		}
 		
 		if ($useJson) 
 		{
-			return $lastResponse->toJson();
+			return $this->lastResponse->toJson();
 		}
 		else
 		{
-			return $lastResponse;
+			return $this->lastResponse;
 		}
 	}
 }

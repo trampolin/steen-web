@@ -52,12 +52,10 @@ class Kachel extends BasePageObject {
 	
 	public function refresh() {
 		$q = "SELECT * FROM kacheln WHERE id=".$this->id;
-		
 		$result = $this->db->query($q);
 		if ($this->db->get_last_num_rows() > 0) {
 			
 			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
-				//$kachel = new Kachel($this->db);		
 				$this->cssid = $row['cssid'];
 				$this->cssclass = $row['cssclass'];
 				$this->options = $row['options'];

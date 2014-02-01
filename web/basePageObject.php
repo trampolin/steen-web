@@ -27,40 +27,59 @@ abstract class BasePageObject {
 		$this->lastResponse = null;
 	}
 	
-	public function deactivate() {
-		$this->active = 0;
-		return $this->update();
-	}	
-	
 	public function activate() {
 		$this->active = 1;
-		return $this->update();
+		$success = $this->update(); 
+		if ($success)
+		{
+			$this->lastResponse == new HTMLResponse("ok",null,$this->id,$this->getHTML());
+		}
+		else
+		{
+			$this->doError("Activation failed");
+		}
+		return $success;
+	}
+	
+	public function deactivate() {
+		$this->active = 0;
+		$success = $this->update(); 
+		if ($success)
+		{
+			$this->lastResponse == new HTMLResponse("ok",null,$this->id,$this->getHTML());
+		}
+		else
+		{
+			$this->doError("Deactivation failed");
+		}
+		return $success;
 	}
 	
 	public abstract function update();	
+	public abstract function getHTML();
 	
 	public function getDB() {
 		return $this->db;
 	}
 	
 	public function getLastResponse($useJson = true) {
-		if ($lastResponse === null) 
+		/*if ($this->lastResponse === null) 
 		{
 			$this->doError("No response available");
-		}
+		}*/
 		
 		if ($useJson) 
 		{
-			return $lastResponse->toJson();
+			return $this->lastResponse->toJson();
 		}
 		else
 		{
-			return $lastResponse;
+			return $this->lastResponse;
 		}
 	}
 	
 	public function doError($message) {
-		$lastResponse = new IDErrorResponse($message,$this->id);
+		$this->lastResponse = new IDErrorResponse($message,$this->id);
 	}
 }
 
