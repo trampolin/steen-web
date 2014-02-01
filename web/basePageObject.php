@@ -1,9 +1,12 @@
 <?php
 
 include_once("database.php");
+include_once("responseTypes.php");
 
 abstract class BasePageObject {
 	protected $db;
+	
+	protected $response;
 	
 	public $id;
 	public $order;
@@ -19,6 +22,7 @@ abstract class BasePageObject {
 	public function __construct($aDb) {
 		$this->db = $aDb;
 		$this->id = null;
+		$this->response = null;
 	}
 	
 	public function deactivate() {
@@ -35,6 +39,17 @@ abstract class BasePageObject {
 	
 	public function getDB() {
 		return $this->db;
+	}
+	
+	public function getLastResponse() {
+		if ($response != null) 
+		{
+		
+		}
+		else
+		{
+		
+		}
 	}
 }
 
