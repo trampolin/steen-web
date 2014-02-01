@@ -6,7 +6,7 @@ include_once("responseTypes.php");
 abstract class BasePageObject {
 	protected $db;
 	
-	protected $response;
+	protected $lastResponse;
 	
 	public $id;
 	public $order;
@@ -22,7 +22,7 @@ abstract class BasePageObject {
 	public function __construct($aDb) {
 		$this->db = $aDb;
 		$this->id = null;
-		$this->response = null;
+		$this->lastResponse = null;
 	}
 	
 	public function deactivate() {
@@ -41,15 +41,24 @@ abstract class BasePageObject {
 		return $this->db;
 	}
 	
-	public function getLastResponse() {
-		if ($response != null) 
+	public function getLastResponse($useJson = false) {
+		if ($lastResponse === null) 
 		{
+			$this->doError("No response available");
+		}
 		
+		if ($useJson) 
+		{
+			return $lastResponse->toJson();
 		}
 		else
 		{
-		
+			return $lastResponse;
 		}
+	}
+	
+	public function doError($message) {
+		$lastResponse = new IDErrorResponse($message,$this->id)
 	}
 }
 
