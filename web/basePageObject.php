@@ -58,7 +58,7 @@ abstract class BasePageObject {
 	}
 	
 	public function doError($message) {
-		$lastResponse = new IDErrorResponse($message,$this->id)
+		$lastResponse = new IDErrorResponse($message,$this->id);
 	}
 }
 
