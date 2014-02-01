@@ -10,7 +10,7 @@
 </head>
 <body>
 <?php
-	include_once("functions.php");
+	include_once("pageControl.php");
 ?>
 	<div id="everything">
 		<div class="innerfull" id="header">

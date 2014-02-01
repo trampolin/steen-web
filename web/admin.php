@@ -30,7 +30,7 @@
 	
 	//echo $user." ".$password." ".$loggedin;
 
-	include_once("functions.php");
+	include_once("pageControl.php");
 	
 	$pageControl = new PageControl(true);
 	

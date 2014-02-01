@@ -1,7 +1,7 @@
 <?php
 
 include_once("database.php");
-include_once("functions.php");
+include_once("pageControl.php");
 
 class BasicResponse {
 	public $result;
@@ -55,7 +55,7 @@ class IDErrorResponse extends ErrorResponse {
 function handleRequest() {
 	$_WHERE = $_POST;
 	
-	$pageControl = new PageControl();
+	$pageControl = new PageControl(true);
 
 	$loggedin = isset($_WHERE['loggedin']) ? $_WHERE['loggedin'] : null;
 	if ($loggedin != null && $loggedin == 1)
