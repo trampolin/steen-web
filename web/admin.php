@@ -34,13 +34,13 @@
 	
 	$pageControl = new PageControl(true);
 	
-	$quicklink = new Quicklink($pageControl->getDB());
-	$quicklink->qltitle = "TEST";
+	//$quicklink = new Quicklink($pageControl->getDB());
+	//$quicklink->qltitle = "TEST";
 	//$quicklink->qlurl = "TEST";
-	$quicklink->qlorder = 10000;
+	//$quicklink->qlorder = 10000;
 	//$quicklink->qlcssid = "TEST";
 	//$quicklink->qlcssclass = "TEST";
-	$quicklink->active = 0;
+	//$quicklink->active = 0;
 	//$quicklink->insert();
 	
 ?>

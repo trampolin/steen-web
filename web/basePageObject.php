@@ -5,6 +5,7 @@ include_once("responseTypes.php");
 
 abstract class BasePageObject {
 	protected $db;
+	protected $adminmode;
 	
 	protected $lastResponse;
 	
@@ -19,9 +20,10 @@ abstract class BasePageObject {
 		return json_encode($this);
 	}
 	
-	public function __construct($aDb) {
+	public function __construct($aDb,$asAdmin) {
 		$this->db = $aDb;
 		$this->id = null;
+		$this->adminmode = $asAdmin;
 		$this->lastResponse = null;
 	}
 	
@@ -41,7 +43,7 @@ abstract class BasePageObject {
 		return $this->db;
 	}
 	
-	public function getLastResponse($useJson = false) {
+	public function getLastResponse($useJson = true) {
 		if ($lastResponse === null) 
 		{
 			$this->doError("No response available");

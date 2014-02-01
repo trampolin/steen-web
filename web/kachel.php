@@ -6,8 +6,8 @@ class Kachel extends BasePageObject {
 	public $options;
 	public $content;
 	
-	public function getHTML($asAdmin = false) {
-		if (!$asAdmin)
+	public function getHTML() {
+		if (!$this->adminmode)
 		{
 			return "<div class='".$this->cssclass."' id='".$this->cssid."' ".$this->options.">".$this->content."</div>";
 		}
@@ -26,8 +26,8 @@ class Kachel extends BasePageObject {
 		}
 	}
 	
-	public function __construct($aDb) {
-		parent::__construct($aDb);
+	public function __construct($aDb,$asAdmin) {
+		parent::__construct($aDb,$asAdmin);
 	}
 	
 	public static function select($db,$aid) {

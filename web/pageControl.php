@@ -19,7 +19,7 @@ class PageControl {
 			$content = array();
 			
 			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
-				$quicklink = new Quicklink($this->db);		
+				$quicklink = new Quicklink($this->db,$this->adminmode);		
 				$quicklink->cssid = $row['qlcssid'];
 				$quicklink->id = $row['id'];
 				$quicklink->cssclass = $row['qlcssclass'];
@@ -48,7 +48,7 @@ class PageControl {
 			$content = array();
 			
 			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
-				$kachel = new Kachel($this->db);		
+				$kachel = new Kachel($this->db,$this->adminmode);		
 				$kachel->cssid = $row['cssid'];
 				$kachel->id = $row['id'];
 				$kachel->cssclass = $row['cssclass'];
@@ -139,7 +139,7 @@ class PageControl {
 		$lastResponse = new ErrorResponse($message);
 	}
 	
-	public function getLastResponse($useJson = false) {
+	public function getLastResponse($useJson = true) {
 		if ($lastResponse === null) 
 		{
 			$this->doError("No response available");

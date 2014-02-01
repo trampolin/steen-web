@@ -24,22 +24,13 @@ function handleRequest() {
 			case "activate":
 				switch ($mode) {
 					case "quicklink":
-						$ql = Quicklink::select($pageControl->getDB(),$id);
+						$ql = $pageControl->getQuicklinkByID($id);
 						if ($ql != null)
 						{								
-							if($ql->activate()) {
-								$result = new HTMLResponse("ok",null,$id,$ql->getHTML(true));
-								return json_encode($result);
-							}
-							else
-							{
-								$result = new IDErrorResponse("Activate failed",$id);
-								return json_encode($result);
-							}								
+							$ql->activate();
+							return $ql->getLastResponse();							
 						};
-						$result = new IDErrorResponse("Quicklink not found",$id);
-						return json_encode($result);
-						break;
+						return $pageControl->getLastResponse();
 				};
 				break;
 			case "deactivate":

@@ -5,8 +5,8 @@ include_once("basePageObject.php");
 class Quicklink extends BasePageObject {
 	public $url;
 	
-	public function getHTML($asAdmin = false) {
-		if (!$asAdmin)
+	public function getHTML() {
+		if (!$this->adminmode)
 		{
 			return "\n<a href='".$this->url."' title='".$this->title."'><div class='".$this->cssclass."' id='".$this->cssid."'></div></a>";
 		}
@@ -24,8 +24,8 @@ class Quicklink extends BasePageObject {
 		}
 	}
 	
-	public function __construct($aDb) {
-		parent::__construct($aDb);
+	public function __construct($aDb,$asAdmin) {
+		parent::__construct($aDb,$asAdmin);
 	}
 	
 	public static function select($db,$aid) {
