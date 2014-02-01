@@ -101,7 +101,7 @@ class Quicklink {
 							"qlcssid='".$this->qlcssid."', ".
 							"qlcssclass='".$this->qlcssclass."', ".
 							"qlurl='".$this->qlurl."', ".
-							"active=".$this->active.", ".
+							"active=".$this->active." ".
 						"WHERE id=".$this->id;
 			return $this->db->query($q);
 		}
