@@ -23,7 +23,7 @@ function removeQuicklink(aid) {
 				dataType : "json",
 				type: "POST",
 				success: function (response) {
-					if (response.result = "ok")
+					if (response.result == "ok")
 					{
 						$("#quicklink-"+response.id).slideUpRemove()//slideUp(300);
 					}
@@ -54,14 +54,14 @@ function activateQuicklink(aid) {
 			dataType : "json",
 			type: "POST",
 			success: function (response) {
-				if (response.result = "ok")
+				if (response.result == "ok")
 				{
 					//$("#quicklink-"+response.id).slideUpRemove()//slideUp(300);
-					alert('success');
+					alert("success");
 				}
 				else
 				{
-					alert(response);
+					alert(response.message);
 				}
 				//console.log(response);
 			},			
