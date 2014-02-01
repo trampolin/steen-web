@@ -19,13 +19,13 @@ class PageControl {
 			
 			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 				$quicklink = new Quicklink($this->db);		
-				$quicklink->qlcssid = $row['qlcssid'];
+				$quicklink->cssid = $row['qlcssid'];
 				$quicklink->id = $row['id'];
-				$quicklink->qlcssclass = $row['qlcssclass'];
-				$quicklink->qlorder = $row['qlorder'];
+				$quicklink->cssclass = $row['qlcssclass'];
+				$quicklink->order = $row['qlorder'];
 				$quicklink->active = $row['active'];
-				$quicklink->qltitle = $row['qltitle'];
-				$quicklink->qlurl = $row['qlurl'];
+				$quicklink->title = $row['qltitle'];
+				$quicklink->url = $row['qlurl'];
 				$content[] = $quicklink;
 			}
 			
@@ -53,9 +53,9 @@ class PageControl {
 				$kachel->cssclass = $row['cssclass'];
 				$kachel->options = $row['options'];
 				$kachel->content = $row['content'];
-				$kachel->kachelorder = $row['kachelorder'];
+				$kachel->order = $row['kachelorder'];
 				$kachel->active = $row['active'];
-				$kachel->kachelname = $row['kachelname'];
+				$kachel->title = $row['kachelname'];
 				$content[] = $kachel;
 			}
 			

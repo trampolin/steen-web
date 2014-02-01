@@ -1,17 +1,10 @@
 <?php
 
-include_once("database.php");
+include_once("basePageObject.php");
 
-class Kachel {
-	private $db;
-	public $id;
-	public $kachelorder;
-	public $cssid;
-	public $cssclass;
+class Kachel extends BasePageObject {
 	public $options;
 	public $content;
-	public $active;
-	public $kachelname;
 	
 	public function getHTML($asAdmin = false) {
 		if (!$asAdmin)
@@ -23,7 +16,7 @@ class Kachel {
 			return 
 				"<div class='adminkachel ".($this->active ? "active" : "inactive")."' id='kachel-".$this->id."'>".
 					"<div class='adminkachel-content'>".
-						"<span>".$this->kachelname."</span>".
+						"<span>".$this->title."</span>".
 						"<div class='buttonbox'>".
 							"<a href='#'><div class='adminbutton adminbutton-delete' onClick=''></div></a>".
 							"<a href='#'><div class='adminbutton adminbutton-".($this->active ? "deactivate' onClick=''" : "activate' onClick=''")."></div></a>".
@@ -34,12 +27,7 @@ class Kachel {
 	}
 	
 	public function __construct($aDb) {
-		$this->db = $aDb;
-		$this->id = null;
-	}
-	
-	public function toJson() {
-		return json_encode($this);
+		parent::__construct($aDb);
 	}
 	
 	public static function select($db,$aid) {
@@ -74,9 +62,9 @@ class Kachel {
 				$this->cssclass = $row['cssclass'];
 				$this->options = $row['options'];
 				$this->content = $row['content'];
-				$this->kachelorder = $row['kachelorder'];
+				$this->order = $row['kachelorder'];
 				$this->active = $row['active'];
-				$this->kachelname = $row['kachelname'];
+				$this->title = $row['kachelname'];
 			}
 			
 			return true;
@@ -87,27 +75,17 @@ class Kachel {
 		}
 	}
 	
-	public function deactivate() {
-		$this->active = 0;
-		return $this->update();
-	}	
-	
-	public function activate() {
-		$this->active = 1;
-		return $this->update();
-	}
-	
 	public function update() {
 		if ($this->id != null) 
 		{
 			$q =	"UPDATE Kacheln SET ".
-							"kachelorder=".$this->kachelorder.", ".
+							"kachelorder=".$this->order.", ".
 							"cssid='".$this->cssid."', ".
 							"cssclass='".$this->cssclass."', ".
 							"options='".$this->options."', ".
 							"content='".$this->content."', ".
 							"active=".$this->active.", ".
-							"kachelname='".$this->kachelname."' ".
+							"kachelname='".$this->title."' ".
 						"WHERE id=".$this->id;
 			return $this->db->query($q);
 		}
@@ -130,13 +108,13 @@ class Kachel {
 	
 	public function insert() {
 		$q =	"INSERT INTO Kacheln(kachelorder,cssid,cssclass,options,content,active,kachelname) VALUES(".
-								$this->kachelorder.",".
+							$this->order.",".
 						"'".$this->cssid."',".
 						"'".$this->cssclass."',".
 						"'".$this->options."',".
 						"'".$this->content."',".
-								$this->active.",".
-						"'".$this->kachelname."')";
+							$this->active.",".
+						"'".$this->title."')";
 		return $this->db->query($q);
 	}
 }

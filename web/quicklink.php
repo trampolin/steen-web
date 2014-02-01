@@ -1,27 +1,20 @@
 <?php
 
-include_once("database.php");
+include_once("basePageObject.php");
 
-class Quicklink {
-	private $db;
-	public $id;
-	public $qlorder;
-	public $qltitle;
-	public $qlcssid;
-	public $qlcssclass;
-	public $qlurl;
-	public $active;
+class Quicklink extends BasePageObject {
+	public $url;
 	
 	public function getHTML($asAdmin = false) {
 		if (!$asAdmin)
 		{
-			return "\n<a href='".$this->qlurl."' title='".$this->qltitle."'><div class='".$this->qlcssclass."' id='".$this->qlcssid."'></div></a>";
+			return "\n<a href='".$this->url."' title='".$this->title."'><div class='".$this->cssclass."' id='".$this->cssid."'></div></a>";
 		}
 		else
 		{
 			return 	"<div class='adminkachel ".($this->active ? "active" : "inactive")."' id='quicklink-".$this->id."'>".
 					"<div class='adminkachel-content'>".
-						"<span>".$this->qltitle."</span>".
+						"<span>".$this->title."</span>".
 						"<div class='buttonbox'>".
 							"<a href='#'><div class='adminbutton adminbutton-delete' onClick='removeQuicklink(".$this->id.")'></div></a>".
 							"<a href='#'><div class='adminbutton adminbutton-".($this->active ? "deactivate' onClick='deactivateQuicklink(".$this->id.")'" : "activate' onClick='activateQuicklink(".$this->id.")'")."></div></a>".
@@ -32,12 +25,7 @@ class Quicklink {
 	}
 	
 	public function __construct($aDb) {
-		$this->db = $aDb;
-		$this->id = null;
-	}
-	
-	public function toJson() {
-		return json_encode($this);
+		parent::__construct($aDb);
 	}
 	
 	public static function select($db,$aid) {
@@ -66,11 +54,11 @@ class Quicklink {
 		if ($this->db->get_last_num_rows() > 0) {
 			
 			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
-				$this->qlorder = $row['qlorder'];
-				$this->qltitle = $row['qltitle'];
-				$this->qlcssid = $row['qlcssid'];
-				$this->qlcssclass = $row['qlcssclass'];
-				$this->qlurl = $row['qlurl'];
+				$this->order = $row['qlorder'];
+				$this->title = $row['qltitle'];
+				$this->cssid = $row['qlcssid'];
+				$this->cssclass = $row['qlcssclass'];
+				$this->url = $row['qlurl'];
 				$this->active = $row['active'];
 			}
 			
@@ -82,25 +70,15 @@ class Quicklink {
 		}
 	}
 	
-	public function deactivate() {
-		$this->active = 0;
-		return $this->update();
-	}	
-	
-	public function activate() {
-		$this->active = 1;
-		return $this->update();
-	}
-	
 	public function update() {
 		if ($this->id != null) 
 		{
 			$q =	"UPDATE Quicklinks SET ".
-							"qlorder=".$this->qlorder.", ".
-							"qltitle='".$this->qltitle."', ".
-							"qlcssid='".$this->qlcssid."', ".
-							"qlcssclass='".$this->qlcssclass."', ".
-							"qlurl='".$this->qlurl."', ".
+							"qlorder=".$this->order.", ".
+							"qltitle='".$this->title."', ".
+							"qlcssid='".$this->cssid."', ".
+							"qlcssclass='".$this->cssclass."', ".
+							"qlurl='".$this->url."', ".
 							"active=".$this->active." ".
 						"WHERE id=".$this->id;
 			return $this->db->query($q);
@@ -124,12 +102,12 @@ class Quicklink {
 	
 	public function insert() {
 		$q =	"INSERT INTO Quicklinks(qlorder,qltitle,qlcssid,qlcssclass,qlurl,active) VALUES(".
-								$this->qlorder.",".
-						"'".$this->qltitle."',".
-						"'".$this->qlcssid."',".
-						"'".$this->qlcssclass."',".
-						"'".$this->qlurl."',".
-								$this->active.")";
+							$this->order.",".
+						"'".$this->title."',".
+						"'".$this->cssid."',".
+						"'".$this->cssclass."',".
+						"'".$this->url."',".
+							$this->active.")";
 		return $this->db->query($q);
 	}
 }
