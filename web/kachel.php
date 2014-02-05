@@ -64,11 +64,12 @@ class Kachel extends BasePageObject {
 				$this->active = $row['active'];
 				$this->title = $row['kachelname'];
 			}
-			
+			$this->createResponse("Refresh ok");
 			return true;
 		}
 		else
 		{
+			$this->createError("Refresh fehlgeschlagen (Empty)");
 			return false;
 		}
 	}
@@ -85,10 +86,20 @@ class Kachel extends BasePageObject {
 							"active=".$this->active.", ".
 							"kachelname='".$this->title."' ".
 						"WHERE id=".$this->id;
-			return $this->db->query($q);
+			$success = $this->db->query($q); 
+			if ($success)
+			{
+				$this->createResponse("Update ok");
+			}
+			else
+			{
+				$this->createError("Update fehlgeschlagen (Query)");
+			}
+			return $success;
 		}
 		else
 		{
+			createError("Update fehlgeschlagen");
 			return false;
 		}
 	}
@@ -96,10 +107,20 @@ class Kachel extends BasePageObject {
 	public function remove() {
 		if ($this->id != null) {
 			$q =	"DELETE FROM Kacheln WHERE id=".$this->id;
-			return $this->db->query($q);
+			$success = $this->db->query($q); 
+			if ($success)
+			{
+				$this->createResponse("Remove ok");
+			}
+			else
+			{
+				$this->createError("Remove fehlgeschlagen (Query)");
+			}
+			return $success;
 		}
 		else
 		{
+			createError("Remove fehlgeschlagen");
 			return false;
 		}
 	}
@@ -113,7 +134,17 @@ class Kachel extends BasePageObject {
 						"'".$this->content."',".
 							$this->active.",".
 						"'".$this->title."')";
-		return $this->db->query($q);
+						
+		$success = $this->db->query($q); 
+		if ($success)
+		{
+			$this->createResponse("Insert ok");
+		}
+		else
+		{
+			$this->createError("Insert fehlgeschlagen (Query)");
+		}
+		return $success;
 	}
 }
 

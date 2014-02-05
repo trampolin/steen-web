@@ -63,12 +63,12 @@ class Quicklink extends BasePageObject {
 				$this->url = $row['qlurl'];
 				$this->active = $row['active'];
 			}
-			
-			
+			$this->createResponse("Refresh ok");
 			return true;
 		}
 		else
 		{
+			$this->createError("Refresh fehlgeschlagen (Empty)");
 			return false;
 		}
 	}
@@ -84,8 +84,16 @@ class Quicklink extends BasePageObject {
 							"qlurl='".$this->url."', ".
 							"active=".$this->active." ".
 						"WHERE id=".$this->id;
-			//$this->lastResponse = new HTMLResponse("ok","update ok",$this->id,$this->getHTML());			
-			return $this->db->query($q);
+			$success = $this->db->query($q); 
+			if ($success)
+			{
+				$this->createResponse("Update ok");
+			}
+			else
+			{
+				$this->createError("Update fehlgeschlagen (Query)");
+			}
+			return $success;
 		}
 		else
 		{
@@ -97,10 +105,20 @@ class Quicklink extends BasePageObject {
 	public function remove() {
 		if ($this->id != null) {
 			$q = "DELETE FROM Quicklinks WHERE id=".$this->id;
-			return $this->db->query($q);
+			$success = $this->db->query($q); 
+			if ($success)
+			{
+				$this->createResponse("Remove ok");
+			}
+			else
+			{
+				$this->createError("Remove fehlgeschlagen (Query)");
+			}
+			return $success;
 		}
 		else
 		{
+			createError("Remove fehlgeschlagen");
 			return false;
 		}
 	}
@@ -113,7 +131,16 @@ class Quicklink extends BasePageObject {
 						"'".$this->cssclass."',".
 						"'".$this->url."',".
 							$this->active.")";
-		return $this->db->query($q);
+		$success = $this->db->query($q); 
+		if ($success)
+		{
+			$this->createResponse("Insert ok");
+		}
+		else
+		{
+			$this->createError("Insert fehlgeschlagen (Query)");
+		}
+		return $success;
 	}
 }
 

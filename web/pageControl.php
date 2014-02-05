@@ -137,6 +137,12 @@ class PageControl {
 	
 	public function createError($message) {
 		$this->lastResponse = new ErrorResponse($message);
+		return $this->lastResponse;
+	}
+	
+	public function createQuicklinkResponse($message = null) {
+		$this->lastResponse = new ItemResponse("ok",$message,null,$this->getQuicklinkListHTML(),$this->quicklinks);
+		return $this->lastResponse;
 	}
 	
 	public function getLastResponse($useJson = true) {
