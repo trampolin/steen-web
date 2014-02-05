@@ -84,11 +84,12 @@ class Quicklink extends BasePageObject {
 							"qlurl='".$this->url."', ".
 							"active=".$this->active." ".
 						"WHERE id=".$this->id;
-						
+			//$this->lastResponse = new HTMLResponse("ok","update ok",$this->id,$this->getHTML());			
 			return $this->db->query($q);
 		}
 		else
 		{
+			createError("Update fehlgeschlagen");
 			return false;
 		}
 	}

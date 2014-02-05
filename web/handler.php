@@ -34,7 +34,7 @@ function handleRequest() {
 				};
 				break;
 			case "deactivate":
-				$result =  "deactivate: ";
+				$result =  '{ "result":"nok","message":"fail" }';
 				break;
 			case "remove":
 				switch ($mode) {

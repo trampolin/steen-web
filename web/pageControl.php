@@ -117,7 +117,7 @@ class PageControl {
 				return $kachel;
 			}
 		};
-		$this->doError("Kachel ".$aid." not found!");
+		$this->createError("Kachel ".$aid." not found!");
 		return null;
 	}
 	
@@ -127,7 +127,7 @@ class PageControl {
 				return $quicklink;
 			}
 		};
-		$this->doError("Quicklink ".$aid." not found!");
+		$this->createError("Quicklink ".$aid." not found!");
 		return null;
 	}
 	
@@ -135,14 +135,14 @@ class PageControl {
 		return json_encode($this);
 	}
 	
-	public function doError($message) {
+	public function createError($message) {
 		$this->lastResponse = new ErrorResponse($message);
 	}
 	
 	public function getLastResponse($useJson = true) {
 		if ($this->lastResponse === null) 
 		{
-			$this->doError("No response available");
+			$this->createError("No response available");
 		}
 		
 		if ($useJson) 

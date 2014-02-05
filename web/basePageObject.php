@@ -28,31 +28,45 @@ abstract class BasePageObject {
 	}
 	
 	public function activate() {
-		$this->active = 1;
-		$success = $this->update(); 
-		if ($success)
+		if ($this->active !=  0)
 		{
-			$this->lastResponse == new HTMLResponse("ok",null,$this->id,$this->getHTML());
+			$this->createError("Already activated");
 		}
 		else
 		{
-			$this->doError("Activation failed");
+			$this->active = 1;
+			$success = $this->update(); 
+			if ($success)
+			{
+				$this->createResponse("Activation ok");
+			}
+			else
+			{
+				$this->createError("Activation failed");
+			}
+			return $success;
 		}
-		return $success;
 	}
 	
 	public function deactivate() {
-		$this->active = 0;
-		$success = $this->update(); 
-		if ($success)
+		if ($this->active ==  0)
 		{
-			$this->lastResponse == new HTMLResponse("ok",null,$this->id,$this->getHTML());
+			$this->createError("Already deactivated");
 		}
 		else
 		{
-			$this->doError("Deactivation failed");
+			$this->active = 0;
+			$success = $this->update(); 
+			if ($success)
+			{
+				$this->createResponse("Deactivation ok");
+			}
+			else
+			{
+				$this->createError("Deactivation failed");
+			}
+			return $success;
 		}
-		return $success;
 	}
 	
 	public abstract function update();	
@@ -63,10 +77,10 @@ abstract class BasePageObject {
 	}
 	
 	public function getLastResponse($useJson = true) {
-		/*if ($this->lastResponse === null) 
+		if ($this->lastResponse === null) 
 		{
-			$this->doError("No response available");
-		}*/
+			$this->createError("No response available");
+		}
 		
 		if ($useJson) 
 		{
@@ -78,8 +92,14 @@ abstract class BasePageObject {
 		}
 	}
 	
-	public function doError($message) {
+	public function createError($message) {
 		$this->lastResponse = new IDErrorResponse($message,$this->id);
+		return $this->lastResponse;
+	}
+	
+	public function createResponse($message, $result = "ok") {
+		$this->lastResponse = new ItemResponse($result,$message,$this->id,$this->getHTML(),$this);
+		return $this->lastResponse;
 	}
 }
 

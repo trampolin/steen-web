@@ -31,7 +31,25 @@ class HTMLResponse extends IDResponse {
 		parent::__construct($result,$message,$id);
 		$this->html = $html;
 	}
+}
 
+class ItemResponse extends HTMLResponse {
+	public $items;
+	
+	public function __construct($result,$message,$id,$html,$items) {
+		parent::__construct($result,$message,$id,$html);
+		
+		if (is_array($items))
+		{
+			$this->items = $items;		
+		}
+		else
+		{
+			$this->items = array();
+			$this->items[] = $items;
+		}
+
+	}
 }
 
 class ErrorResponse extends BasicResponse {
