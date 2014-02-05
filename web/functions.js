@@ -57,7 +57,8 @@ function activateQuicklink(aid) {
 				if (response.result == "ok")
 				{
 					//$("#quicklink-"+response.id).slideUpRemove()//slideUp(300);
-					alert("success");
+					//alert("success");
+					updateItem("quicklink",response.items[0]);
 				}
 				else
 				{
@@ -70,7 +71,56 @@ function activateQuicklink(aid) {
 			}
 		}
 	)
+}
+
+function updateItem(itemtype,ql) {
+	console.log(ql);
+	var item = $('#'+itemtype+'-'+ql.id);
 	
+	if (ql.active == 1)
+	{
+		item.removeClass('inactive');
+		item.addClass('active');
+		
+		var button = $('div#'+itemtype+'-'+ql.id+' > div.adminbutton-deactivate');
+	}
+	else
+	{
+		item.removeClass('inactive');
+		item.addClass('active');
+	}
+	
+}
+
+function deactivateQuicklink(aid) {
+	$.ajax(
+		{
+			url: "handler.php",
+			data: {
+				loggedin: 1,
+				id: aid,
+				action: "deactivate",
+				mode: "quicklink"
+			},
+			dataType : "json",
+			type: "POST",
+			success: function (response) {
+				if (response.result == "ok")
+				{
+					//$("#quicklink-"+response.id).slideUpRemove()//slideUp(300);
+					//alert("success");
+					updateItem("quicklink",response.items[0]);
+				}
+				else
+				{
+					alert(response.message);
+				}
+			},			
+			error: function( xhr, status ) {
+					alert( "Sorry, there was a problem!" );
+			}
+		}
+	)
 }
 
 function addLocalQuicklink() {

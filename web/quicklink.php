@@ -18,8 +18,8 @@ class Quicklink extends BasePageObject {
 					"<div class='adminkachel-content'>".
 						"<span>".$this->title."</span>".
 						"<div class='buttonbox'>".
-							"<a href='#'><div class='adminbutton adminbutton-delete' onClick='removeQuicklink(".$this->id.")'></div></a>".
-							"<a href='#'><div class='adminbutton adminbutton-".($this->active ? "deactivate' onClick='deactivateQuicklink(".$this->id.")'" : "activate' onClick='activateQuicklink(".$this->id.")'")."></div></a>".
+							"<div class='adminbutton adminbutton-delete' onClick='removeQuicklink(".$this->id.")'></div>".
+							"<div class='adminbutton adminbutton-".($this->active ? "deactivate' onClick='deactivateQuicklink(".$this->id.")'" : "activate' onClick='activateQuicklink(".$this->id.")'")."></div>".
 						"</div>".
 					"</div>".
 				"</div>";

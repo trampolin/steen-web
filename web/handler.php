@@ -34,7 +34,16 @@ function handleRequest() {
 				};
 				break;
 			case "deactivate":
-				$result =  '{ "result":"nok","message":"fail" }';
+				switch ($mode) {
+					case "quicklink":
+						$ql = $pageControl->getQuicklinkByID($id);
+						if ($ql != null)
+						{								
+							$ql->deactivate();
+							return $ql->getLastResponse();							
+						};
+						return $pageControl->getLastResponse();
+				};
 				break;
 			case "remove":
 				switch ($mode) {
