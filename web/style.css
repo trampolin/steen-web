@@ -33,6 +33,12 @@
 	background-color: #fff;
 }
 
+#quicklink-wrapper
+{
+	/*width: 288px;*/
+	margin: 0px auto;
+}
+
 #quicklink-new
 {
 	background-color: yellow;
@@ -186,19 +192,19 @@
 
 #yt
 {
-	background-image: url("images/yt64.png");
-	left: 447px;
+	background-image: url("images/ytFlat64.png");
+	/*left: 447px;*/
 }	
 
 #fb
 {
-	background-image: url("images/fb64.png");
-	left: 367px;
+	background-image: url("images/fbFlat64.png");
+	/*left: 367px;*/
 }
 #tw
 {
-	background-image: url("images/tw64.png");
-	left: 527px;
+	background-image: url("images/twFlat64.png");
+	/*left: 527px;*/
 }
 
 body

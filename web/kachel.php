@@ -19,7 +19,7 @@ class Kachel extends BasePageObject {
 						"<span>".$this->title."</span>".
 						"<div class='buttonbox'>".
 							"<a href='#'><div class='adminbutton adminbutton-delete' onClick=''></div></a>".
-							"<a href='#'><div class='adminbutton adminbutton-".($this->active ? "deactivate' onClick=''" : "activate' onClick=''")."></div></a>".
+							"<a href='#'><div class='adminbutton adminbutton-".($this->active ? "deactivate' onClick=''" : "activate' onClick=''")." id='adminbutton-kachel-".$this->id."'></div></a>".
 						"</div>".
 					"</div>".
 				"</div>";

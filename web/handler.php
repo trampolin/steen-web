@@ -48,7 +48,7 @@ function handleRequest() {
 			case "remove":
 				switch ($mode) {
 					case "quicklink":
-						$ql = Quicklink::select($pageControl->getDB(),$id);
+						$ql = $pageControl->getQuicklinkByID($id);
 						
 						if ($ql != null)
 						{	

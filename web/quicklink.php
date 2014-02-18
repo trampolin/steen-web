@@ -19,7 +19,7 @@ class Quicklink extends BasePageObject {
 						"<span>".$this->title."</span>".
 						"<div class='buttonbox'>".
 							"<div class='adminbutton adminbutton-delete' onClick='removeQuicklink(".$this->id.")'></div>".
-							"<div class='adminbutton adminbutton-".($this->active ? "deactivate' onClick='deactivateQuicklink(".$this->id.")'" : "activate' onClick='activateQuicklink(".$this->id.")'")."></div>".
+							"<div class='adminbutton adminbutton-".($this->active ? "deactivate' onClick='deactivateQuicklink(".$this->id.")'" : "activate' onClick='activateQuicklink(".$this->id.")'")." id='adminbutton-quicklink-".$this->id."'></div>".
 						"</div>".
 					"</div>".
 				"</div>";
@@ -30,10 +30,10 @@ class Quicklink extends BasePageObject {
 		parent::__construct($aDb,$asAdmin);
 	}
 	
-	public static function select($db,$aid) {
+	public static function select($db,$aid,$asAdmin = true) {
 		if ($aid != null) 
 		{
-			$result = new Quicklink($db);
+			$result = new Quicklink($db,$asAdmin);
 			$result->id = $aid;
 			if ($result->refresh())
 			{

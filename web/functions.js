@@ -82,12 +82,15 @@ function updateItem(itemtype,ql) {
 		item.removeClass('inactive');
 		item.addClass('active');
 		
-		var button = $('div#'+itemtype+'-'+ql.id+' > div.adminbutton-deactivate');
+		var button = $('#adminbutton-'+itemtype+'-'+ql.id);
+		
 	}
 	else
 	{
-		item.removeClass('inactive');
-		item.addClass('active');
+		item.removeClass('active');
+		item.addClass('inactive');
+		
+		var button = $('#adminbutton-'+itemtype+'-'+ql.id);
 	}
 	
 }

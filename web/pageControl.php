@@ -111,6 +111,16 @@ class PageControl {
 		return $result;
 	}
 	
+	public function getQuicklinkWrapperWidth() {
+		$width = 0;
+		foreach ($this->quicklinks as $quicklink) {
+			if($quicklink->active == 1) {
+				$width++;
+			}
+		};
+		return ($width*64)+($width*32);
+	}
+	
 	public function getKachelByID($aid) {		
 		foreach ($this->kacheln as $kachel) {
 			if($kachel->id == $aid) {

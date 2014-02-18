@@ -30,10 +30,12 @@
 		<div class="innerfull" id="header">
 		</div>
 		<div class="innerfull" id="kachelcontainer">
-			<?php echo $pageControl->getKachelListHTML() ?>
+			<?php echo $pageControl->getKachelListHTML(); ?>
 		</div>
 		<div class="innerfull" id="quicklinks">
-			<?php echo $pageControl->getQuicklinkListHTML() ?>
+			<div id="quicklink-wrapper" style="width: <?php echo $pageControl->getQuicklinkWrapperWidth();?>px">
+				<?php echo $pageControl->getQuicklinkListHTML() ?>
+			</div>
 		</div>
 	</div>
 </body>
