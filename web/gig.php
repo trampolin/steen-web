@@ -21,7 +21,7 @@ class Gig extends BasePageObject {
 		}
 		else
 		{
-			return "bla";	
+			return "\n";	
 		}
 	}
 	
