@@ -1,3 +1,5 @@
+@font-face { font-family: steen; src: url(Ubuntu-B.ttf); } 
+
 .innerfull{
 	width: 920px;
 }
@@ -31,6 +33,17 @@
 .gigtickeritem {
 	/*background-color: #fbb;*/
 	text-align: center;
+	font-family: steen;
+	font-size: 18pt;
+}
+.gigtickeritem a {
+	text-decoration: none;
+	color: #44f;
+}
+
+.gigtickeritem a:hover {
+	text-decoration: none;
+	color: #f44;
 }
 
 #kachelcontainer

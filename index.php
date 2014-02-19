@@ -12,8 +12,8 @@
 <body onload="$(function() {
   $('#nextgig').vTicker('init', 
 		{
-			speed: 400, 
-			pause: 4000,
+			speed: 1000, 
+			pause: 3000,
 			padding: 10,
 			showItems: 1
 		}
