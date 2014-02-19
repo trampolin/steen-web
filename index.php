@@ -46,6 +46,10 @@
 				<?php echo $pageControl->getQuicklinkListHTML() ?>
 			</div>
 		</div>
+		<div class="innerfull" id="footer">
+			<div><a href="mailto:booking@steenband.de">Booking</a></div>
+			<div><a href="#">EPK</a></div>
+		</div>
 	</div>
 </body>
 </html>
