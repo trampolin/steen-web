@@ -22,6 +22,17 @@
 	background-position: center;
 }
 
+#nextgig
+{
+	background-color: #fff;
+	margin-top: 10px;
+}
+
+.gigtickeritem {
+	/*background-color: #fbb;*/
+	text-align: center;
+}
+
 #kachelcontainer
 {
 	min-height: 540px;
