@@ -1,7 +1,7 @@
 <?php
 
-require_once("database.php");
-require_once("responseTypes.php");
+require_once(ROOT_DIR."/classes/database.php");
+require_once(ROOT_DIR."/classes/responseTypes.php");
 
 abstract class BasePageObject {
 	protected $db;

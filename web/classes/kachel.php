@@ -1,6 +1,6 @@
 <?php
 
-require_once("basePageObject.php");
+require_once(ROOT_DIR."/classes/basePageObject.php");
 
 class Kachel extends BasePageObject {
 	public $options;

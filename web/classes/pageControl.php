@@ -1,9 +1,9 @@
 <?php
 
-require_once("database.php");
-require_once("kachel.php");
-require_once("quicklink.php");
-require_once("gig.php");
+require_once(ROOT_DIR."/classes/database.php");
+require_once(ROOT_DIR."/classes/kachel.php");
+require_once(ROOT_DIR."/classes/quicklink.php");
+require_once(ROOT_DIR."/classes/gig.php");
 
 class PageControl {
 	private $lastResponse;

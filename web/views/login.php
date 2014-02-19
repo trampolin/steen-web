@@ -22,7 +22,7 @@ if (isset($login)) {
 	}
 	if ($login->messages) {
 			foreach ($login->messages as $message) {
-					echo "<div class='adminkachel' id='errors'>".$message."</div>";
+					echo "<div class='adminkachel' id='messages'>".$message."</div>";
 			}
 	}
 }

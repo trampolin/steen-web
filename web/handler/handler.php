@@ -1,7 +1,9 @@
 <?php
 
-require_once("database.php");
-require_once("pageControl.php");
+define("ROOT_DIR", "..");
+
+require_once(ROOT_DIR."/classes/database.php");
+require_once(ROOT_DIR."/classes/pageControl.php");
 
 function handleRequest() {
 	$_WHERE = $_POST;

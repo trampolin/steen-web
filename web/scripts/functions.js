@@ -13,7 +13,7 @@ function removeQuicklink(aid) {
 	if (confirm("delete quicklink "+aid+"?")) {
 		$.ajax(
 			{
-				url: "handler.php",
+				url: "handler/handler.php",
 				data: {
 					loggedin: 1,
 					id: aid,
@@ -34,7 +34,7 @@ function removeQuicklink(aid) {
 					//console.log(response);
 				},			
 				error: function( xhr, status ) {
-						alert( "Sorry, there was a problem!" );
+						alert( xhr.responseText );
 				}
 			}
 		)
@@ -44,7 +44,7 @@ function removeQuicklink(aid) {
 function activateQuicklink(aid) {
 	$.ajax(
 		{
-			url: "handler.php",
+			url: "handler/handler.php",
 			data: {
 				loggedin: 1,
 				id: aid,
@@ -67,7 +67,7 @@ function activateQuicklink(aid) {
 				//console.log(response);
 			},			
 			error: function( xhr, status ) {
-					alert( "Sorry, there was a problem!" );
+					alert(  xhr.responseText );
 			}
 		}
 	)
@@ -98,7 +98,7 @@ function updateItem(itemtype,ql) {
 function deactivateQuicklink(aid) {
 	$.ajax(
 		{
-			url: "handler.php",
+			url: "handler/handler.php",
 			data: {
 				loggedin: 1,
 				id: aid,
@@ -120,7 +120,7 @@ function deactivateQuicklink(aid) {
 				}
 			},			
 			error: function( xhr, status ) {
-					alert( "Sorry, there was a problem!" );
+					alert(  xhr.responseText  );
 			}
 		}
 	)
@@ -136,7 +136,7 @@ function addLocalQuicklink() {
 function adminLogin(auser,apasswordmd5) {
 	$.ajax(
 		{
-			url: "handler.php",
+			url: "handler/handler.php",
 			data: {
 				action: "login",
 				loggedin: 0,
@@ -157,42 +157,8 @@ function adminLogin(auser,apasswordmd5) {
 				//console.log(response);
 			},			
 			error: function( xhr, status ) {
-					alert( "Sorry, there was a problem!" );
+					alert(  xhr.responseText );
 			}
 		}
 	)
-}
-
-function handleRequest(aloggedin,aid,aaction,mode) {
-	// Using the core $.ajax() method
-	$.ajax({
-			// the URL for the request
-			url: "handler.php",
-	 
-			// the data to send (will be converted to a query string)
-			data: {
-					loggedin: aloggedin,
-					id: aid,
-					action: aaction,
-					json: ajson
-			},
-	 
-			// whether this is a POST or GET request
-			type: "POST",
-			
-			//dataType : "json",
-	 
-			// code to run if the request succeeds;
-			// the response is passed to the function
-			success: function( response ) {
-				console.log(response);
-			},
-	 
-			// code to run if the request fails; the raw request and
-			// status codes are passed to the function
-			error: function( xhr, status ) {
-					alert( "Sorry, there was a problem!" );
-			}
-	});
-
 }

@@ -20,7 +20,10 @@
 	);
 });">
 <?php
-	include_once("web/classes/pageControl.php");
+	define("ROOT_DIR", "./web");
+
+
+	require_once(ROOT_DIR."/classes/pageControl.php");
 	
 	$pageControl = new PageControl(false);
 	
