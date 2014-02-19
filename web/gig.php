@@ -11,7 +11,7 @@ class Gig extends BasePageObject {
 	
 	public function getTitle() {
 		$d = new DateTime($this->datum);
-		return date_format($d, 'd.m.Y H:i')." - ".$this->city." - ".$this->venue;
+		return mb_strtoupper(date_format($d, 'd.m.Y H:i')." - ".$this->city." - ".$this->venue);
 	}
 	
 	public function getHTML() {

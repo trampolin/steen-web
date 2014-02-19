@@ -52,6 +52,24 @@ class ItemResponse extends HTMLResponse {
 	}
 }
 
+class LoginResponse extends BasicResponse {
+	public $user;
+
+	public function __construct($user) {
+		$this->user = $user;
+	
+		if ($this->user == null || $this->user=="")
+		{
+			parent::__construct("nok","login failed");
+		}
+		else
+		{
+			parent::__construct("ok","login success");
+		}
+		
+	}
+}
+
 class ErrorResponse extends BasicResponse {
 	public function __construct($message) {
 		parent::__construct("nok",$message);

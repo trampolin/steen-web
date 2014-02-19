@@ -7,17 +7,23 @@ function handleRequest() {
 	$_WHERE = $_POST;
 	
 	$pageControl = new PageControl(true);
-
+	$action = isset($_WHERE['action']) ? $_WHERE['action'] : null;
 	$loggedin = isset($_WHERE['loggedin']) ? $_WHERE['loggedin'] : null;
-	if ($loggedin != null && $loggedin == 1)
+	if (($loggedin != null && $loggedin == 1) || ($action == 'login'))
 	{
-		$action = isset($_WHERE['action']) ? $_WHERE['action'] : null;
+		
 		$id = isset($_WHERE['id']) ? $_WHERE['id'] : null;
 		$mode = isset($_WHERE['mode']) ? $_WHERE['mode'] : null;
 		
 		$result = null;
 		
 		switch ($action) {
+			case "login":
+				$user = isset($_WHERE['user']) ? $_WHERE['user'] : null;
+				$password = isset($_WHERE['pass']) ? $_WHERE['pass'] : null;
+				$result = new LoginResponse($user);
+				return $result->toJson();
+				break;
 			case "update":
 				$result = "update: ";
 				break;
@@ -79,7 +85,7 @@ function handleRequest() {
 	}
 	else
 	{
-		$result = new IDErrorResponse("Error",$id);
+		$result = new ErrorResponse("Not logged in or login params wrong");
 		return json_encode($result);
 	}
 }

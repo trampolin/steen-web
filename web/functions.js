@@ -133,6 +133,35 @@ function addLocalQuicklink() {
 	
 }
 
+function adminLogin(auser,apasswordmd5) {
+	$.ajax(
+		{
+			url: "handler.php",
+			data: {
+				action: "login",
+				loggedin: 0,
+				user: auser,
+				pass: apasswordmd5
+			},
+			dataType : "json",
+			type: "POST",
+			success: function (response) {
+				if (response.result == "ok")
+				{
+					alert("logged in as: " +response.user);
+				}
+				else
+				{
+					alert(response.message);
+				}
+				//console.log(response);
+			},			
+			error: function( xhr, status ) {
+					alert( "Sorry, there was a problem!" );
+			}
+		}
+	)
+}
 
 function handleRequest(aloggedin,aid,aaction,mode) {
 	// Using the core $.ajax() method

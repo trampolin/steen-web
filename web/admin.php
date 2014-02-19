@@ -18,7 +18,7 @@
 	if ($loggedin == null)
 	{
 		// richtige abfrage!
-		if (($user != null) && ($password != null))
+		if (($user == 'steen') && ($password == 'freitag13'))
 		{
 			$loggedin = 1;
 		}
@@ -59,7 +59,8 @@
 				else
 				{
 			?>
-				<div class="adminkachel">Please log in: <a href="./index.php">klick</a></div>
+				<script>$(location).attr('href',"./index.php");</script>
+				<!--div class="adminkachel">Please log in: <a href="./index.php">klick</a></div-->
 			<?php
 				};
 			?>
