@@ -55,6 +55,18 @@
 	background-color: yellow;
 }
 
+#errors
+{
+	background-color: #faa;
+	text-align: center;
+}
+
+#messages
+{
+	background-color: #afa;
+	text-align: center;
+}
+
 .kachel
 {
 	margin: 10px;
@@ -134,7 +146,7 @@
 {
 	margin: 10px;
 	width: 898px;
-	height: 150px;
+	/*height: 150px;*/
 	border: 1px solid #aaa;
 	background-color: #fff;
 

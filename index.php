@@ -3,11 +3,11 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
-<link rel="shortcut icon" type="image/x-icon" href="web/images/steen_32x32_schwarz.ico">
-<link rel="stylesheet" type="text/css" href="web/style.css">
+<link rel="shortcut icon" type="image/x-icon" href="web/style/images/steen_32x32_schwarz.ico">
+<link rel="stylesheet" type="text/css" href="web/style/style.css">
 <title>steen</title>
-<script src="web/jquery-2.1.0.js" type="text/javascript"></script> 
-<script src="web/jquery.vticker.js" type="text/javascript"></script> 
+<script src="web/scripts/jquery-2.1.0.js" type="text/javascript"></script> 
+<script src="web/scripts/jquery.vticker.js" type="text/javascript"></script> 
 </head>
 <body onload="$(function() {
   $('#nextgig').vTicker('init', 
@@ -20,7 +20,7 @@
 	);
 });">
 <?php
-	include_once("web/pageControl.php");
+	include_once("web/classes/pageControl.php");
 	
 	$pageControl = new PageControl(false);
 	
