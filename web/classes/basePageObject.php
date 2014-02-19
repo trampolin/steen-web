@@ -1,7 +1,7 @@
 <?php
 
-include_once("database.php");
-include_once("responseTypes.php");
+require_once("database.php");
+require_once("responseTypes.php");
 
 abstract class BasePageObject {
 	protected $db;

@@ -1,12 +1,15 @@
 <?php
+
+require_once("config/db.php");
+
 class DatabaseConnection {
 	var $dblink;
 	var $result;
 	var $num_rows;
 	
 	function __construct() {
-		$this->dblink = mysql_connect("localhost", "root", "");
-		mysql_select_db("sb");
+			$this->dblink = mysql_connect(DB_HOST, DB_USER, DB_PASS);
+		mysql_select_db(DB_NAME);
 	}
 
 	function query($query) {

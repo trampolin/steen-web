@@ -1,6 +1,6 @@
 <?php
 
-include_once("basePageObject.php");
+require_once("basePageObject.php");
 
 class Gig extends BasePageObject {
 	public $url;

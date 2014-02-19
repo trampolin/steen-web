@@ -1,9 +1,9 @@
 <?php
 
-include_once("database.php");
-include_once("kachel.php");
-include_once("quicklink.php");
-include_once("gig.php");
+require_once("database.php");
+require_once("kachel.php");
+require_once("quicklink.php");
+require_once("gig.php");
 
 class PageControl {
 	private $lastResponse;

@@ -1,7 +1,7 @@
 <?php
 
-include_once("database.php");
-include_once("pageControl.php");
+require_once("database.php");
+require_once("pageControl.php");
 
 function handleRequest() {
 	$_WHERE = $_POST;
