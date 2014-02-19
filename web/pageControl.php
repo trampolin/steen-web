@@ -3,6 +3,7 @@
 include_once("database.php");
 include_once("kachel.php");
 include_once("quicklink.php");
+include_once("gig.php");
 
 class PageControl {
 	private $lastResponse;
@@ -10,6 +11,7 @@ class PageControl {
 	public $adminmode;
 	public $kacheln;
 	public $quicklinks;
+	public $gigs;
 	
 	private function GetQuicklinks() {
 		$where = $this->adminmode ? "" : "WHERE active=1 ";
@@ -68,6 +70,35 @@ class PageControl {
 		}
 	}
 	
+	private function GetGigs() {
+		$where = $this->adminmode ? "" : "WHERE active=1 ";
+		
+		$q = "SELECT * FROM gigs " . $where . "ORDER BY datum ASC";
+		
+		$result = $this->db->query($q);
+		if ($this->db->get_last_num_rows() > 0) {
+			$content = array();
+			
+			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+				$gig = new Gig($this->db,$this->adminmode);	
+				$gig->id = $row['id'];
+				$gig->datum = $row['datum'];
+				$gig->city = $row['stadt'];
+				$gig->venue = $row['club'];
+				$gig->url = $row['url'];
+				$gig->active = $row['active'];
+				$gig->info = $row['info'];
+				$content[] = $gig;
+			}
+			
+			return $content;		
+		}
+		else
+		{
+			return null;
+		}
+	}
+	
 	public function getDB() {
 		return $this->db;
 	}
@@ -77,6 +108,7 @@ class PageControl {
 		$this->adminmode = $asAdmin;
 		$this->kacheln = $this->getKacheln();
 		$this->quicklinks = $this->GetQuicklinks();
+		$this->gigs = $this->getGigs();
 	}
 	
 	public function getKachelListHeaderHTML() {
@@ -108,6 +140,16 @@ class PageControl {
 			$result = $result.$quicklink->getHTML($this->adminmode);
 		}
 		$result .= "</div>";
+		return $result;
+	}
+	
+	public function getGigListHTML() {
+		$result = "<ul class='gigtickeritemscontainer innerfull'>";
+		foreach($this->gigs as $gig) 
+		{ 
+			$result = $result.$gig->getHTML($this->adminmode);
+		}
+		$result .= "</ul>";
 		return $result;
 	}
 	

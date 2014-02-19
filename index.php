@@ -44,11 +44,12 @@
 		<div class="innerfull" id="header">
 		</div>
 		<div class="innerfull" id="nextgig">
-			<ul class="gigtickeritemscontainer innerfull">
+			<?php echo $pageControl->getGigListHTML(); ?>
+			<!--ul class="gigtickeritemscontainer innerfull">
 				<li class="gigtickeritem">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</li>
 				<li class="gigtickeritem">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut</li>
 				<li class="gigtickeritem">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</li>
-			</ul>
+			</ul-->
 		</div>
 		<div class="innerfull" id="kachelcontainer">
 			<?php echo $pageControl->getKachelListHTML(); ?>
